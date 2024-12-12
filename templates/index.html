@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Groundwater Situation Prediction</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h2 class="mt-5">Groundwater Situation Prediction</h2>
+      <form action="/predict" method="post" class="mt-4">
+        <div class="form-group">
+          <label for="net_annual_gw"
+            >Net annual groundwater availability:</label
+          >
+          <input
+            type="number"
+            step="any"
+            class="form-control"
+            id="net_annual_gw"
+            name="net_annual_gw"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="total_usage">Total Usage:</label>
+          <input
+            type="number"
+            step="any"
+            class="form-control"
+            id="total_usage"
+            name="total_usage"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="gw_future_irrigation"
+            >Groundwater availability for future irrigation use:</label
+          >
+          <input
+            type="number"
+            step="any"
+            class="form-control"
+            id="gw_future_irrigation"
+            name="gw_future_irrigation"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Predict</button>
+      </form>
+      {% if prediction %}
+      <div class="alert alert-info mt-4">
+        <strong>Predicted Situation:</strong> {{ prediction }}
+      </div>
+      {% endif %}
+    </div>
+  </body>
+</html>
